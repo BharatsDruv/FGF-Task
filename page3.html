@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Fly GoldFinch Task : Page 3</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<!-- source for ajax  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+		<script>
+		// For printing Loading
+		document.onreadystatechange = function ()
+		{
+				  var state = document.readyState
+				  if (state == 'interactive')
+					{
+				       document.getElementById('contents').style.visibility="hidden";
+				  } else if (state == 'complete')
+					{
+				      setTimeout(function()
+							{
+				         document.getElementById('interactive');
+				         document.getElementById('load').style.visibility="hidden";
+				         document.getElementById('contents').style.visibility="visible";
+				      },1000);
+				  }
+				}
+		</script>
+
+  </head>
+
+  <body >
+		<!-- here the loading GIF will be printed -->
+		<div id="load"></div>
+
+  <script>
+	// To get data from API
+              var staticUrl='https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&sole'
+              $.getJSON(staticUrl,function(data)
+              {
+													// tasks is list to contain all the recieved elements from API
+					                var tasks = [];
+
+					                for(i=0;i<data.length;i=i+1)
+					                {
+					                 tasks[i]=data[i];
+					                }
+
+													// To create Card
+				                let cardContainer;
+					              let createTaskCard = (task) =>
+											{
+
+					                let card = document.createElement('div');
+					                card.className = 'card shadow cursor-pointer';
+
+					                let cardBody = document.createElement('div');
+					                cardBody.className = 'card-body';
+
+					                let title = document.createElement('h5');
+					                title.innerText = "Name: "+task.first+" "+task.last;
+					                title.className = 'card-title';
+
+
+					                cardBody.appendChild(title);
+					                card.appendChild(cardBody);
+					                cardContainer.appendChild(card);
+										}
+										// To add card in container
+			              let initListOfTasks = () =>
+										{
+				                if (cardContainer)
+												{
+				                  document.getElementById('card-container').replaceWith(cardContainer);
+				                  return;
+				                }
+
+				                cardContainer = document.getElementById('card-container');
+				                tasks.forEach((task) =>
+												{
+				                  createTaskCard(task);
+				                });
+			              };
+
+			              initListOfTasks(); // Here you go
+
+
+            });
+		</script>
+
+        <div align="center" >
+            <a  class="button button2" href="page2.html">To Page 2</a>
+            <a  class="button button2" href="page4.html">To Page 4</a>
+        </div>
+				<br>
+				<hr>
+					<!-- To print card container -->
+				<div id='card-container' class="cardtext"></div>
+
+
+	</body>
+</html>

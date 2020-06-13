@@ -1,0 +1,72 @@
+/* CSS  */
+/* body tag */
+body {
+		    font-family: sans-serif;
+				background:url(../../images/banner.jpg);
+			font-weight: bold;
+		}
+
+		/* For Card */
+		.card {
+		  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+		  padding: 16px;
+			border: 1px solid black;
+			margin: 1rem;
+		}
+		/* For card text */
+		.cardtext {
+		text-align: center;
+		position: absolute;
+		font-size: 24px;
+		color: white;
+		}
+
+	/* when you hover through a card */
+				.card:hover {
+				  background-color: white;
+				  color: black;
+				}
+				.text {
+				text-align: center;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+				color: white;
+				}
+
+
+/* For loading screen used in page 3 */
+		#load{
+		    width:100%;
+		    height:100%;
+		    position:fixed;
+		    z-index:9999;
+		    background:url("https://flevix.com/wp-content/uploads/2019/07/Ball-Drop-Preloader-1.gif") no-repeat center center rgba(0,0,0,0.25)
+		}
+
+/* Button   */
+		.button {
+		  background-color: #4CAF50; /* Green */
+		  border: none;
+		  color: white;
+		  padding: 16px 32px;
+		  text-align: center;
+		  text-decoration: none;
+		  display: inline-block;
+		  font-size: 24px;
+		  margin: 4px 2px;
+		  transition-duration: 0.4s;
+		  cursor: pointer;
+		}
+		.button2 {
+	  background-color: white;
+	  color: black;
+
+	}
+
+/* when hover through button */
+	.button2:hover {
+	  background-color: black;
+	  color: white;
+	}

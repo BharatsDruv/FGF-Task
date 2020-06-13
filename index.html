@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Fly GoldFinch Task: Page 1</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- souce to css file -->
+		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<script type="text/javascript">
+				 var clicks = 0;
+				// Function when + Pressed
+				 function onClickPlus()
+				 {
+						 clicks += 1;
+						 document.getElementById("clicks").innerHTML = clicks;
+				 };
+				 // Function when - Pressed
+				 function onClickMinus()
+				 {
+						 clicks -= 1;
+						 document.getElementById("clicks").innerHTML = clicks;
+				 };
+
+	 </script>
+	</head>
+
+	<body>
+
+
+		<!-- Banner -->
+				<div class="text">
+					<!-- Here the counter will be printed -->
+					<h1 style="font-size:100px">Count: <a id="clicks">0</a></h1>
+					<a  class="button button2" onClick="onClickPlus()">+</a>
+					<a  class="button button2" onClick="onClickMinus()">-</a><br><br>
+					<a  class="button button2" href="page2.html">To Page 2</a>
+
+				</div>
+
+
+	</body>
+</html>

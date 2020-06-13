@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Fly GoldFinch Task : Page 4</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+    <!-- source for ajax -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+      <script>
+            // To populate Dropdown
+            function populateSelect()
+            {
+                // currency data
+                var tasks = [
+                {"currency":"XCD","name":"East Caribbean dollar","symbol":"$"},
+                {"currency":"EUR","name":"European euro","symbol":"€"},
+                {"currency":"GEL","name":"Georgian lari","symbol":"₾"},
+                {"currency":"XCD","name":"East Caribbean dollar","symbol":"$"},
+                {"currency":"HTG","name":"Haitian gourde","symbol":"G"},
+                {"currency":"INR","name":"Indian rupee","symbol":"₹"},
+                {"currency":"ILS","name":"Israeli new sheqel","symbol":"₪"},
+                {"currency":"KZT","name":"Kazakhstani tenge","symbol":"лв"},
+                {"currency":"KWD","name":"Kuwaiti dinar","symbol":"د.ك"},
+                {"currency":"LSL","name":"Lesotho loti","symbol":"L"},
+                {"currency":"USD","name":"U.S. Dollar","symbol":"$"},
+                ];
+
+                // ele1 for: from SELECT
+                var ele1 = document.getElementById('sel1');
+                // ele2 for: To SELECT
+                var ele2 = document.getElementById('sel2');
+                // Traverse through each element of JSON and add to SELECT
+                for (var i = 0; i < tasks.length; i++)
+                {
+                    // POPULATE SELECT ELEMENT WITH JSON.
+                    ele1.innerHTML = ele1.innerHTML +
+                        '<option value="' + tasks[i]['currency'] + '">' + tasks[i]['name'] + '</option>';
+
+                    ele2.innerHTML = ele2.innerHTML +
+                            '<option value="' + tasks[i]['currency'] + '">' + tasks[i]['name'] + '</option>';
+
+                }
+            }
+
+            var From="";
+            var To="";
+            function show(ele1,ele2,input)
+            {
+                // GET THE SELECTED VALUE FROM <select> ELEMENT AND SHOW IT.
+                From=ele1.value;
+                To=ele2.value;
+                var inputValue=input.value;
+
+                  // HIT API and get rate
+                	fetch(`https://free.currconv.com/api/v7/convert?q=${From}_${To}&compact=ultra&apiKey=dd8e835c3d0a875afe5e`)
+                		.then(res => res.json())
+                		.then(res => {
+                    var rate = Object.values(res)[0];
+                    var result=rate*inputValue;
+                    // result is the final answer
+                    document.getElementById('Output').innerHTML = result;
+
+                	})
+
+            }
+
+      </script>
+
+    </head>
+
+    <body  onload=populateSelect();>
+
+    <div align="center" >
+        <a  class="button button2" href="page3.html">To Page 3</a>
+        <a  class="button button2" href="index.html">To Page 1</a>
+    </div>
+
+    <div align="center">
+    <br>
+    <hr>
+    </div>
+
+    <div class="text">
+              <div >
+              <input type="input"  placeholder="Input" name="Input" id='Input' style="width: 300px;" required />
+            </div>
+            <br>
+            <!--The SELECT element.-->
+            <div style="width:400px;">
+            <select id="sel1">
+                <option value="">-- From --</option>
+            </select>
+            <br>
+            <select id="sel2">
+                <option value="">-- To --</option>
+            </select>
+            </div>
+            <br>
+            <!-- Calculate button -->
+            <a  class="button button2" onClick="show(sel1,sel2,Input)">Calculate</a><br><br>
+            <br>
+            <h1 style="font-size:30px" ><span id='Output'>Output:</span></h1>
+
+    </div>
+
+
+	</body>
+</html>
